@@ -33,10 +33,15 @@ type TestResult = {
   engineCompliance: Array<boolean>;
 };
 
+type SummaryEntry = {
+  testType: string | null;
+  percentages: Array<number>;
+};
+
 type Compliance = {
   engines: Omit<EngineRunner, 'query'>[];
   results: TestResult[];
-  summary: Array<number>;
+  summary: SummaryEntry[];
 }
 
 const compliance: Compliance = {
@@ -67,11 +72,25 @@ for(const test of cts.tests){
   compliance.results.push(result);
 }
 
-const nrOfTests = compliance.results.length;
-for (const index of engines.keys()){
-  const nrOfCompliantTests = compliance.results.reduce<number>((prev, cur) => cur.engineCompliance[index] ? prev + 1 : prev, 0);
-  compliance.summary.push(nrOfCompliantTests / nrOfTests);
-  // console.log(nrOfCompliantTests);
+
+const testTypes = cts.tests.reduce<string[]>((testTypes, test) => {
+  const testType = test.name.split(',')[0];
+  if(!testTypes.includes(testType)){
+    testTypes.push(testType);
+  }
+  return testTypes
+}, [])
+testTypes.unshift(null); //add "no testType" special case
+
+for(const testType of testTypes){
+  const filteredResults = compliance.results.filter((result) => result.testName.startsWith(testType) || testType === null);
+  const nrOfTests = filteredResults.length;
+  const summary: SummaryEntry  = {testType, percentages: []};
+  for (const engineIndex of engines.keys()){
+    const nrOfCompliantTests = filteredResults.reduce<number>((prev, cur) => cur.engineCompliance[engineIndex] ? prev + 1 : prev, 0);
+    summary.percentages.push(nrOfCompliantTests / nrOfTests);
+  }
+  compliance.summary.push(summary);
 }
 
-console.log(compliance);
+console.log(compliance.summary);
