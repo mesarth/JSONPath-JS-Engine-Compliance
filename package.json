@@ -1,0 +1,23 @@
+{
+  "name": "JSONPath-JS-Engine-Compliance",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "Tobias Schranz <tobias.g.schranz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.8.4",
+    "jsonpath-faster": "^0.0.12",
+    "jsonpath-plus": "^7.2.0",
+    "jsonpathly": "^2.0.0",
+    "lodash": "^4.17.21",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.199",
+    "ts-node": "^10.9.1"
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "exec": "yarn compile && node dist/src/index.js"
+  }
+}
