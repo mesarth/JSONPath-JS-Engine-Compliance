@@ -2,7 +2,9 @@ import cts from '../jsonpath-compliance-test-suite/cts.json';
 
 import { isEqual } from 'lodash'
 import { EngineRunner, engines } from './engines/engines';
+const fs = require('fs');
 
+const OUTPUT_FILE_NAME = 'compliance.json';
 const DO_NOT_COUNT_INVALID_SELECTORS = true;
 const DEBUG = true;
 
@@ -73,5 +75,10 @@ for (const testType of testTypes) {
   }
   compliance.summary.push(summary);
 }
+
+fs.writeFileSync(
+  OUTPUT_FILE_NAME,
+  JSON.stringify(compliance)
+);
 
 console.log(compliance.summary);
