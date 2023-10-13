@@ -1,10 +1,10 @@
 import cts from '../jsonpath-compliance-test-suite/cts.json';
 
-import {isEqual } from 'lodash'
-import { EngineRunner, engines } from './engines';
+import { isEqual } from 'lodash'
+import { EngineRunner, engines } from './engines/engines';
 
 const DO_NOT_COUNT_INVALID_SELECTORS = true;
-const DEBUG = false;
+const DEBUG = true;
 
 type TestResult = {
   testName: string;
@@ -28,24 +28,24 @@ const compliance: Compliance = {
   summary: []
 }
 
-for(const test of cts.tests){
-  if(DO_NOT_COUNT_INVALID_SELECTORS && test.invalid_selector === true){ continue;}
+for (const test of cts.tests) {
+  if (DO_NOT_COUNT_INVALID_SELECTORS && test.invalid_selector === true) { continue; }
 
   const result: TestResult = { testName: test.name, engineCompliance: [] };
-  for (const engine of engines){
+  for (const engine of engines) {
     let testResult = false;
-    try{
+    try {
       const output = engine.query(test.document, test.selector);
-      if(DEBUG && !isEqual(test.result,output)){
+      if (DEBUG && !isEqual(test.result, output)) {
         console.log(`-- ${test.name} --`)
         console.log('standard');
         console.log(test.result)
         console.log(`Not correct: ${engine.name}`)
         console.log(output);
       }
-      testResult = isEqual(test.result,output)
+      testResult = isEqual(test.result, output)
     }
-    catch(e){
+    catch (e) {
     }
     result.engineCompliance.push(testResult);
   }
@@ -56,18 +56,18 @@ for(const test of cts.tests){
 
 const testTypes = cts.tests.reduce<string[]>((testTypes, test) => {
   const testType = test.name.split(',')[0];
-  if(!testTypes.includes(testType)){
+  if (!testTypes.includes(testType)) {
     testTypes.push(testType);
   }
   return testTypes
 }, [])
 testTypes.unshift(null); //add "no testType" special case
 
-for(const testType of testTypes){
+for (const testType of testTypes) {
   const filteredResults = compliance.results.filter((result) => result.testName.startsWith(testType) || testType === null);
   const nrOfTests = filteredResults.length;
-  const summary: SummaryEntry  = {testType, percentages: []};
-  for (const engineIndex of engines.keys()){
+  const summary: SummaryEntry = { testType, percentages: [] };
+  for (const engineIndex of engines.keys()) {
     const nrOfCompliantTests = filteredResults.reduce<number>((prev, cur) => cur.engineCompliance[engineIndex] ? prev + 1 : prev, 0);
     summary.percentages.push(nrOfCompliantTests / nrOfTests);
   }
