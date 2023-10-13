@@ -1,32 +1,10 @@
 import cts from '../jsonpath-compliance-test-suite/cts.json';
-import {query} from 'jsonpathly';
-import {JSONPath} from 'jsonpath-plus';
+
 import {isEqual } from 'lodash'
-var jpfaster = require('jsonpath-faster');
+import { EngineRunner, engines } from './engines';
 
-type EngineRunner = {
-  id: string;
-  name: string;
-  query: (document: any, expression: string) => any;
-};
-
-const engines: EngineRunner[] = [
-  {
-    id: 'JSONPath-Plus/JSONPath',
-    name: 'JSONPath Plus',
-    query: (document, expression) => JSONPath({path: expression, json: document})
-  },
-  {
-    id: 'atamano/jsonpathly',
-    name: 'jsonpathly',
-    query: (document, expression) => query(document, expression, { hideExceptions: true, returnArray: true})
-  },
-  {
-    id: 'AndyA/jsonpath-faster',
-    name: 'jsonpath-faster',
-    query: (document, expression) => jpfaster.query(document, expression)
-  }
-]
+const DO_NOT_COUNT_INVALID_SELECTORS = true;
+const DEBUG = false;
 
 type TestResult = {
   testName: string;
@@ -51,24 +29,27 @@ const compliance: Compliance = {
 }
 
 for(const test of cts.tests){
+  if(DO_NOT_COUNT_INVALID_SELECTORS && test.invalid_selector === true){ continue;}
+
   const result: TestResult = { testName: test.name, engineCompliance: [] };
   for (const engine of engines){
+    let testResult = false;
     try{
       const output = engine.query(test.document, test.selector);
-      // if(!isEqual(test.result,output)){
-      //   console.log(`-- ${test.name} --`)
-      //   console.log('standard');
-      //   console.log(test.result)
-      //   console.log(`Not correct: ${engine.name}`)
-      //   console.log(output);
-      // }
-
-      result.engineCompliance.push(isEqual(test.result,output));
+      if(DEBUG && !isEqual(test.result,output)){
+        console.log(`-- ${test.name} --`)
+        console.log('standard');
+        console.log(test.result)
+        console.log(`Not correct: ${engine.name}`)
+        console.log(output);
+      }
+      testResult = isEqual(test.result,output)
     }
     catch(e){
     }
+    result.engineCompliance.push(testResult);
   }
-  // console.log();
+  if (DEBUG) console.log();
   compliance.results.push(result);
 }
 
