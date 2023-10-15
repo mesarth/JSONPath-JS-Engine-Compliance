@@ -6,21 +6,37 @@ const jpfaster = require("jsonpath-faster");
 import { jpbrunerd } from "./brunerd-jsonpath/jsonpath.min.js";
 
 export type EngineRunner = {
-  id: string;
+  repo: string;
+  version?: string;
   name: string;
   query: (document: any, expression: string) => any;
 };
 
+const getInstalledPackageVersion = (name: string): string => {
+  const fs = require('fs');
+  const path = require('path');
+  try {
+    const json = JSON.parse(
+      fs.readFileSync(path.join('node_modules', name, 'package.json'), 'utf8')
+    );
+    return json.version;
+  } catch (e) {
+    console.log(`failed to read/parse package.json for ${name}`, e);
+  }
+};
+
 export const engines: EngineRunner[] = [
   {
-    id: "JSONPath-Plus/JSONPath",
     name: "JSONPath Plus",
+    repo: "JSONPath-Plus/JSONPath",
+    version: getInstalledPackageVersion("jsonpath-plus"),
     query: (document, expression) =>
       jsonpathplus({ path: expression, json: document }),
   },
   {
-    id: "atamano/jsonpathly",
     name: "jsonpathly",
+    repo: "atamano/jsonpathly",
+    version: getInstalledPackageVersion("jsonpathly"),
     query: (document, expression) =>
       jsonpathly(document, expression, {
         hideExceptions: true,
@@ -28,13 +44,15 @@ export const engines: EngineRunner[] = [
       }),
   },
   {
-    id: "AndyA/jsonpath-faster",
     name: "jsonpath-faster",
+    repo: "AndyA/jsonpath-faster",
+    version: getInstalledPackageVersion("jsonpath-faster"),
     query: (document, expression) => jpfaster.query(document, expression),
   },
   {
-    id: "brunerd/jsonpath",
+    repo: "brunerd/jsonpath",
     name: "brunerd JSONPath",
+    version: "0.9.18",
     query: (document, expression) => jpbrunerd(document, expression),
   },
 ];
