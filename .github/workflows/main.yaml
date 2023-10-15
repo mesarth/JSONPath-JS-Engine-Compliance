@@ -22,7 +22,7 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-        width:
+        with:
           enablement: true
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
