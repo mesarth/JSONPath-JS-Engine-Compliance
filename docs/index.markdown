@@ -4,7 +4,7 @@ layout: default
 
 # {{ site.title }}
 
-This project evaluates how well different JavaScript JSONPath engines align with the evolving [JSONPath standard]({{ site.standard }}). The compliance tests are provided by [{{ site.compliance_tests_repo }}]( {{ site.compliance_tests_repo }} ).
+This project evaluates how well different JavaScript JSONPath engines comply with the [JSONPath standard (wip)]({{ site.standard }}). The compliance tests are provided by [{{ site.compliance_tests_repo }}]( {{ site.compliance_tests_repo }} ).
 
 The project is inspired by [cburgmer's JSONPath comparison]({{ site.consensus_comparison }}) which uses consensus among the engines instead of compliance with the standard.
 

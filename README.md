@@ -1,6 +1,6 @@
 # JSONPath JavaScript Engine Compliance
 
-This project evaluates how well different JavaScript JSONPath engines align with the evolving [JSONPath standard](https://datatracker.ietf.org/wg/jsonpath/about/). The compliance tests are provided by [https://github.com/jsonpath-standard/jsonpath-compliance-test-suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite).
+This project evaluates how well different JavaScript JSONPath engines comply with the [JSONPath standard (wip)](https://datatracker.ietf.org/wg/jsonpath/about/). The compliance tests are provided by [https://github.com/jsonpath-standard/jsonpath-compliance-test-suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite).
 
 The project is inspired by [cburgmer's JSONPath comparison](https://cburgmer.github.io/json-path-comparison/) which uses consensus among the engines instead of compliance with the standard.
 
