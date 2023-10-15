@@ -19,6 +19,6 @@
   "scripts": {
     "compile": "tsc -p ./",
     "build": "yarn compile && node dist/src/index.js",
-    "serve": "cd docs && bundle exec jekyll serve"
+    "serve": "mkdir -p docs/_data && cp compliance.json docs/_data/compliance.json && cd docs && bundle exec jekyll serve"
   }
 }

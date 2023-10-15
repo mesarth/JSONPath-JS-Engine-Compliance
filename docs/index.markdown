@@ -14,19 +14,6 @@ The project is inspired by [cburgmer's JSONPath comparison]({{ site.consensus_co
 
 ## Overview
 
-<style>
-  table{
-    position: relative;
-    overflow: unset !important; /* does not work with sticky otherwise */
-    border-collapse: unset !important;
-  }
-
-  thead {
-    position: sticky;
-    top: 0;
-  }
-</style>
-
 <table>
     {% include engine_table_header.md %}
     <tbody>

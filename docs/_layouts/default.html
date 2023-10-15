@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.3.0/github-markdown-light.min.css">
+  <title>{{ site.title }}</title>
+  <style>
+    body {
+      overflow: auto;
+    }
+
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+  
+    table{
+      position: relative;
+      border-collapse: unset !important;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+    }
+
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+    @media (min-width: 767px) {
+      table{
+        overflow: unset !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <article class="markdown-body">
+    {{ content }}
+  </article>
+</body>
+</html>

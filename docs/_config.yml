@@ -6,7 +6,5 @@ consensus_comparison: https://cburgmer.github.io/json-path-comparison/
 standard: https://datatracker.ietf.org/wg/jsonpath/about/
 
 # Build settings
-remote_theme: vadiole/github-markdown-theme
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
