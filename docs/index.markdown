@@ -28,14 +28,7 @@ The project is inspired by [cburgmer's JSONPath comparison]({{ site.consensus_co
 </style>
 
 <table>
-    <thead>
-      <tr>
-        <th></th>
-        {% for engine in site.data.compliance.engines %}
-          <th>{{ engine.name }}</th>
-        {% endfor %}
-      </tr>
-    </thead>
+    {% include engine_table_header.md %}
     <tbody>
     {% assign summaryList = site.data.compliance.summary | reverse %}
     {% for summary in summaryList %}
@@ -51,35 +44,29 @@ The project is inspired by [cburgmer's JSONPath comparison]({{ site.consensus_co
       </tr>
     {% endfor %}
     </tbody>
+
 </table>
 
 ## Detailed Results
 
 <table>
-    <thead>
+  {% include engine_table_header.md %}
+  <tbody>
+    {% for result in site.data.compliance.results %}
       <tr>
-        <th></th>
-        {% for engine in site.data.compliance.engines %}
-          <th>{{ engine.name }}</th>
+        <td>{{ result.testName }}</td>
+        {% for engineCompliance in result.engineCompliance %}
+          <td>
+            {% if engineCompliance == true %}
+              ✅
+            {% else %}
+              ❌
+            {% endif %}
+          </td>
         {% endfor %}
       </tr>
-    </thead>
-    <tbody>
-      {% for result in site.data.compliance.results %}
-        <tr>
-          <td>{{ result.testName }}</td>
-          {% for engineCompliance in result.engineCompliance %}
-            <td>
-              {% if engineCompliance == true %}
-                ✅
-              {% else %}
-                ❌
-              {% endif %}
-            </td>
-          {% endfor %}
-        </tr>
-      {% endfor %}
-    </tbody>
+    {% endfor %}
+  </tbody>
 </table>
 
 ---
