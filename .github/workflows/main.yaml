@@ -10,8 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          cache: "yarn"
           submodules: recursive
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: "yarn"
       - run: yarn install
       - run: yarn run build
       - run: cp compliance.json docs/_data/compliance.json
