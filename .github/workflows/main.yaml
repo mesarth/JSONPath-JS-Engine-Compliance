@@ -18,7 +18,7 @@ jobs:
           cache: "yarn"
       - run: yarn install
       - run: yarn run build
-      - run: cp compliance.json docs/_data/compliance.json
+      - run: mkdir -p docs/_data && cp compliance.json docs/_data/compliance.json
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
