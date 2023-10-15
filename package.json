@@ -18,6 +18,7 @@
   },
   "scripts": {
     "compile": "tsc -p ./",
-    "exec": "yarn compile && node dist/src/index.js"
+    "exec": "yarn compile && node dist/src/index.js",
+    "serve-docs": "cd docs && bundle exec jekyll serve"
   }
 }
