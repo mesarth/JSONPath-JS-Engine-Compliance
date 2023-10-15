@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const OUTPUT_FILE_NAME = 'compliance.json';
 const DO_NOT_COUNT_INVALID_SELECTORS = true;
-const DEBUG = true;
+const DEBUG = process.argv[2] && process.argv[2] === '--debug';
 
 type TestResult = {
   testName: string;
@@ -48,6 +48,7 @@ for (const test of cts.tests) {
       testResult = isEqual(test.result, output)
     }
     catch (e) {
+      if (DEBUG) console.log(e);
     }
     result.engineCompliance.push(testResult);
   }
