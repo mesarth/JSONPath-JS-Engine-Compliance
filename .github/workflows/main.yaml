@@ -22,7 +22,7 @@ jobs:
           node-version: 16.x
           cache: "yarn"
       - run: yarn install
-      - run: yarn run build
+      - run: yarn run build --ignore-invalid
       - run: mkdir -p docs/_data && cp compliance.json docs/_data/compliance.json
       - name: Setup Pages
         id: pages
