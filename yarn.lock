@@ -164,6 +164,11 @@ is-property@^1.0.2:
   resolved "https://registry.yarnpkg.com/is-property/-/is-property-1.0.2.tgz#57fe1c4e48474edd65b09911f26b1cd4095dda84"
   integrity sha512-Ks/IoX00TtClbGQr4TWXemAnktAQvYB7HzcCxDGqEZU6oCmb2INHuOoKxbtR+HFkmYWBKv/dOZtGRiAjDhj92g==
 
+json-p3@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/json-p3/-/json-p3-1.1.1.tgz#a5cd05d44b94da37cb8e42f838e4ed50cfd6adef"
+  integrity sha512-F++4B8FA10cNA7axEOR8h0NpmRnxIL4IzUIZ6fTD6QmoPk415lD2NMWMxsf/fQiqJC/7RtU4te1bSOrGtq/w/A==
+
 jsonpath-faster@^0.0.12:
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/jsonpath-faster/-/jsonpath-faster-0.0.12.tgz#c77df560f60ad64f1d8470dcf563e4c483724562"

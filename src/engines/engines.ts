@@ -4,6 +4,7 @@ const jpfaster = require("jsonpath-faster");
 //Brunered engine .js file has to be manually updated because it is not published in any registry. I tried to to use the repo as a git submodule but that didn't work because the the functions are not exported / the files are not set up as modules.
 //https://github.com/brunerd/jsonpath/blob/main/jsonpath.min.js
 import { jpbrunerd } from "./brunerd-jsonpath/jsonpath.min.js";
+import { jsonpath as jsonp3 } from "json-p3";
 
 export type EngineRunner = {
   repo: string;
@@ -26,6 +27,12 @@ const getInstalledPackageVersion = (name: string): string => {
 };
 
 export const engines: EngineRunner[] = [
+  {
+    name: "json-p3",
+    repo: "jp-rp/json-p3",
+    version: getInstalledPackageVersion("json-p3"),
+    query: (document, expression) => jsonp3.query(expression, document).values()
+  },
   {
     name: "JSONPath Plus",
     repo: "JSONPath-Plus/JSONPath",
@@ -52,7 +59,7 @@ export const engines: EngineRunner[] = [
   {
     repo: "brunerd/jsonpath",
     name: "brunerd JSONPath",
-    version: "0.9.18",
+    version: "0.9.19",
     query: (document, expression) => jpbrunerd(document, expression),
   },
 ];
