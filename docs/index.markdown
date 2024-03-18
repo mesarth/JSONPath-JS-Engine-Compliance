@@ -4,7 +4,9 @@ layout: default
 
 # {{ site.title }}
 
-This project evaluates how well different JavaScript JSONPath engines comply with the [JSONPath standard (wip)]({{ site.standard }}). The compliance tests are provided by [{{ site.compliance_tests_repo }}]( {{ site.compliance_tests_repo }} ).
+This project evaluates how well different JavaScript JSONPath engines comply with the [JSONPath standard (RFC 9535)]({{ site.standard }}). The compliance tests are provided by [{{ site.compliance_tests_repo }}]( {{ site.compliance_tests_repo }} ).
+
+Note: Only valid queries are evaluated due to the different approaches to error handling between engines.
 
 The project is inspired by [cburgmer's JSONPath comparison]({{ site.consensus_comparison }}) which uses consensus among the engines instead of compliance with the standard.
 

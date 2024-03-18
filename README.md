@@ -1,6 +1,7 @@
 # JSONPath JavaScript Engine Compliance
 
-This project evaluates how well different JavaScript JSONPath engines comply with the [JSONPath standard (wip)](https://datatracker.ietf.org/wg/jsonpath/about/). The compliance tests are provided by [https://github.com/jsonpath-standard/jsonpath-compliance-test-suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite).
+This project evaluates how well different JavaScript JSONPath engines comply with the [JSONPath standard (RFC 9535)](https://datatracker.ietf.org/doc/rfc9535/). The compliance tests are provided by [https://github.com/jsonpath-standard/jsonpath-compliance-test-suite](https://github.com/jsonpath-standard/jsonpath-compliance-test-suite). 
+
 
 The project is inspired by [cburgmer's JSONPath comparison](https://cburgmer.github.io/json-path-comparison/) which uses consensus among the engines instead of compliance with the standard.
 
@@ -36,10 +37,10 @@ or with debug output
 yarn run build --debug
 ```
 
-and/or ignore test cases wich test againt invalid selectors
+and/or test queries with invalid selectors (results are not accurate due to the different approaches to error handling between engines)
 
 ```bash
-yarn run build --ignore-invalid
+yarn run build --test-invalid
 ```
 
 ### Run jekyll site locally

@@ -3,7 +3,7 @@ repo: https://github.com/mesarth/JSONPath-JS-Engine-Compliance
 github: https://github.com/mesarth/
 compliance_tests_repo: https://github.com/jsonpath-standard/jsonpath-compliance-test-suite
 consensus_comparison: https://cburgmer.github.io/json-path-comparison/
-standard: https://datatracker.ietf.org/wg/jsonpath/about/
+standard: https://datatracker.ietf.org/doc/rfc9535/
 
 # Build settings
 plugins:

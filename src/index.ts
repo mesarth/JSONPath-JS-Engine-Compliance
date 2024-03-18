@@ -5,7 +5,7 @@ import { EngineRunner, engines } from './engines/engines';
 const fs = require('fs');
 
 const OUTPUT_FILE_NAME = 'compliance.json';
-const IGNORE_INVALID_SELECTORS = process.argv?.includes('--ignore-invalid');
+const TEST_INVALID_SELECTORS = process.argv?.includes('--test-invalid');
 const DEBUG = process.argv?.includes('--debug');
 
 type TestResult = {
@@ -31,7 +31,7 @@ const compliance: Compliance = {
 }
 
 for (const test of cts.tests) {
-  if (IGNORE_INVALID_SELECTORS && test.invalid_selector === true) { continue; }
+  if (!TEST_INVALID_SELECTORS && test.invalid_selector === true) { continue; }
 
   const result: TestResult = { testName: test.name, engineCompliance: [] };
   for (const engine of engines) {
