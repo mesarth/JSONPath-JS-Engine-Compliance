@@ -11,7 +11,7 @@ The results are published at [https://mesarth.github.io/JSONPath-JS-Engine-Compl
 
 ## Run comparison locally
 
-Install Node.js and Yarn
+Install Node.js
 
 ### Clone Repo with Submodules (!)
 
@@ -22,25 +22,25 @@ git clone --recurse-submodules https://github.com/mesarth/JSONPath-JS-Engine-Com
 ### Install Dependencies
 
 ```bash
-yarn install
+npm install
 ```
 
 ### Generate compliance.json file
 
 ```bash
-yarn run build
+npm run build
 ```
 
 or with debug output
 
 ```bash
-yarn run build --debug
+npm run build --debug
 ```
 
 and/or test queries with invalid selectors (results are not accurate due to the different approaches to error handling between engines)
 
 ```bash
-yarn run build --test-invalid
+npm run build --test-invalid
 ```
 
 ### Run jekyll site locally
@@ -48,5 +48,5 @@ yarn run build --test-invalid
 Install [Jekyll](https://jekyllrb.com/docs/installation/)
 
 ```bash
-yarn run serve
+npm run serve
 ```

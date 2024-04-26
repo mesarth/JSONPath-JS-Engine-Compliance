@@ -20,9 +20,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: "yarn"
-      - run: yarn install
-      - run: yarn run build
+          cache: "npm"
+      - run: npm install
+      - run: npm run build
       - run: mkdir -p docs/_data && cp compliance.json docs/_data/compliance.json
       - name: Setup Pages
         id: pages
