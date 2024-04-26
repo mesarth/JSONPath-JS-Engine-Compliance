@@ -34,13 +34,13 @@ npm run build
 or with debug output
 
 ```bash
-npm run build --debug
+npm run build -- --debug
 ```
 
 and/or test queries with invalid selectors (results are not accurate due to the different approaches to error handling between engines)
 
 ```bash
-npm run build --test-invalid
+npm run build -- --test-invalid
 ```
 
 ### Run jekyll site locally
