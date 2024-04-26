@@ -1,5 +1,8 @@
 name: CI
 on:
+  merge_group:
+    types: [checks_requested]
+  pull_request:
   push:
     branches:
       - main
@@ -37,6 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
