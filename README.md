@@ -5,6 +5,14 @@ This project evaluates how well different JavaScript JSONPath engines comply wit
 
 The project is inspired by [cburgmer's JSONPath comparison](https://cburgmer.github.io/json-path-comparison/) which uses consensus among the engines instead of compliance with the standard.
 
+## Engines
+
+- [JSON P3](https://github.com/jg-rp/json-p3)
+- [JSONPath Plus](https://github.com/JSONPath-Plus/JSONPath)
+- [jsonpathly](https://github.com/atamano/jsonpathly)
+- [jsonpath-faster](https://github.com/AndyA/jsonpath-faster)
+- [brunerd JSONPath](https://github.com/brunerd/jsonpath)
+
 ## Results
 
 The results are published at [https://mesarth.github.io/JSONPath-JS-Engine-Compliance/](https://mesarth.github.io/JSONPath-JS-Engine-Compliance/)
