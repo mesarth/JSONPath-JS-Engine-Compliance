@@ -28,8 +28,8 @@ const getInstalledPackageVersion = (name: string): string => {
 
 export const engines: EngineRunner[] = [
   {
-    name: "json-p3",
-    repo: "jp-rp/json-p3",
+    name: "JSON P3",
+    repo: "jg-rp/json-p3",
     version: getInstalledPackageVersion("json-p3"),
     query: (document, expression) => jsonp3.query(expression, document).values()
   },
