@@ -8,3 +8,7 @@ updates:
       - "mesarth"
     labels:
       - "dependencies"
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "daily"
