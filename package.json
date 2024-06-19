@@ -5,7 +5,7 @@
   "author": "Tobias Schranz <tobias.g.schranz@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^20.12.11",
+    "@types/node": "^20.14.6",
     "json-p3": "^1.3.3",
     "jsonpath-faster": "^0.0.12",
     "jsonpath-plus": "^9.0.0",
