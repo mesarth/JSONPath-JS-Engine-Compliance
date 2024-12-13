@@ -9,7 +9,7 @@
     "json-p3": "^1.3.4",
     "jsonpath-faster": "^0.0.12",
     "jsonpath-plus": "^10.0.7",
-    "jsonpathly": "^2.0.1",
+    "jsonpathly": "^2.0.2",
     "lodash": "^4.17.21",
     "typescript": "^5.4.5"
   },
