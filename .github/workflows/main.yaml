@@ -29,7 +29,7 @@ jobs:
       - run: mkdir -p docs/_data && cp compliance.json docs/_data/compliance.json
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
         with:
           enablement: true
       - name: Build with Jekyll
@@ -38,7 +38,7 @@ jobs:
           source: ./docs
           destination: ./_site
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
   deploy:
     if: github.ref == 'refs/heads/main'
     environment:
