@@ -8,7 +8,7 @@
     "@types/node": "^20.12.11",
     "json-p3": "^2.0.0",
     "jsonpath-faster": "^0.0.12",
-    "jsonpath-plus": "^10.2.0",
+    "jsonpath-plus": "^10.3.0",
     "jsonpathly": "^2.0.2",
     "lodash": "^4.17.21",
     "typescript": "^5.4.5"
